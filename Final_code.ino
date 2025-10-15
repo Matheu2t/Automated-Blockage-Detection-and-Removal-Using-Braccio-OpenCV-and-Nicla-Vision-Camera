@@ -29,7 +29,7 @@
 #define GRIP_DELAY_MS      500
 #define LIFT_DWELL_MS      400
 
-// Gripper angles (swap if inverted on your build)
+// Gripper angles 
 #define GRIP_OPEN_ANG      150.0
 #define GRIP_CLOSE_ANG     230.0
 
@@ -205,3 +205,4 @@ void loop() {
 
   delay(2);
 }
+
