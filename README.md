@@ -7,9 +7,6 @@
 [![Issues](https://img.shields.io/github/issues/Matheu2t/Automated-Blockage-Detection-and-Removal-Using-Braccio-OpenCV-and-Nicla-Vision-Camera)](../../issues)
 
 Automates detection and removal of rock blockages in hoppers using **Nicla Vision** for on-edge detection and **Braccio++** for pick-and-place actuation. The system uses **OpenMV (on-device)** or **OpenCV (host)** pipelines and coordinates actions via **Arduino**.
-
-> **Thesis link**: add your thesis/DOI here  
-> **Release tag**: `v1.0-thesis` (recommended for stable citation)
 ---
 ## Table of Contents
 - [Features](#features)
