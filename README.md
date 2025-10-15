@@ -1,40 +1,14 @@
-# Automated Blockage Detection & Removal (Braccio ++ OpenCV + Nicla Vision)
-
-[![Status](https://img.shields.io/badge/status-active-brightgreen)](#)
-[![Platform](https://img.shields.io/badge/platform-Arduino%20%7C%20Python-blue)](#)
-[![Boards](https://img.shields.io/badge/boards-Braccio++%20%7C%20Nano%20RP2040%20Connect%20%7C%20Nicla%20Vision-orange)](#)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
-[![Issues](https://img.shields.io/github/issues/Matheu2t/Automated-Blockage-Detection-and-Removal-Using-Braccio-OpenCV-and-Nicla-Vision-Camera)](../../issues)
-
-Automates detection and removal of rock blockages in hoppers using **Nicla Vision** for on-edge detection and **Braccio++** for pick-and-place actuation. The system uses **OpenMV (on-device)** or **OpenCV (host)** pipelines and coordinates actions via **Arduino**.
----
-## Table of Contents
-- [Features](#features)
-- [System Overview](#system-overview)
-- [Hardware](#hardware)
-- [Firmware & Code Layout](#firmware--code-layout)
-- [Setup](#setup)
-- [Build & Run](#build--run)
-- [Calibration](#calibration)
-- [Results](#results)
-- [Troubleshooting](#troubleshooting)
-- [Directory Structure](#directory-structure)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
----
-## Features
-- ✅ On-edge object detection with **Nicla Vision** (OpenMV) or host-side **OpenCV** fallback  
-- ✅ **Pick-and-place** sequencing on **Braccio++** with safety limits  
-- ✅ Modular pipeline (Detection → Decision → Actuation)  
-- ✅ Real-time status over serial; easy logs for experiments  
-- ✅ Reproducible **thesis release** (`v1.0-thesis`) + ready scripts
----
 ## System Overview
-```mermaid
-flowchart LR
-  A[Camera: Nicla Vision] -->|Detections| B(OpenMV / OpenCV Pipeline)
-  B -->|Decision: rock present?| C{Controller}
-  C -->|Yes| D[Arduino: Braccio++ Sequencer]
-  C -->|No| E[Idle / Monitor]
-  D --> F[Remove & Place]
-  F --> G[Log + Status over Serial]
+
+![Block diagram](docs/img/block-diagram.png)
+
+**Pipeline summary**
+- Nicla Vision runs OpenMV + Edge Impulse model for rock detection and raises a **GPIO pulse on D3** to trigger the cycle on Arduino.
+- Arduino (Nano RP2040 Connect) handles **interrupt on D2**, gates a single pick-and-place **cycle**, and drives Braccio++ motion.
+
+> OpenMV script uses Edge Impulse FOMO post-processing and emits a UART “hello” plus a D3 pulse for triggering. See `ei_object_detection.py` for details.
+
+## How to Run (Edge-only)
+1. Flash `Final_code.ino` to the Arduino board (Braccio++ attached).
+2. In **OpenMV IDE**, load `ei_object_detection.py` on Nicla Vision, ensure `trained.tflite` and `labels.txt` are on the device.
+3. Open Serial Monitor (115200) on the Arduino to watch cycle logs.
