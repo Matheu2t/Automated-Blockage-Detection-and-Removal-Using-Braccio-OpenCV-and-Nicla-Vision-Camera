@@ -1,6 +1,6 @@
 ## System Overview
 
-![Block diagram](docs/img/block-diagram.png)
+![Block diagram](E:\Final year project\block-diagram.png)
 
 **Pipeline summary**
 - Nicla Vision runs OpenMV + Edge Impulse model for rock detection and raises a **GPIO pulse on D3** to trigger the cycle on Arduino.
