@@ -1,0 +1,2 @@
+# Automated-Blockage-Detection-and-Removal-Using-Braccio-OpenCV-and-Nicla-Vision-Camera
+ In mines, large rocks can obstruct ore stockpile hoppers, and require  human intervention and heavy machinery to remove them. This Project  aims to develop an automated pick-and-place robot that identifies and  removes rocks that cause such blockings. With the help of Arduino and  OpenCV, the robot can detect the obstruction and remove them. 
