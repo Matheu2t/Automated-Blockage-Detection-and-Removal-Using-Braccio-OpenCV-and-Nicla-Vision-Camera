@@ -35,12 +35,12 @@
 
 /*** POSES (order: gripper, wrist_roll, wrist_pitch, elbow, shoulder, base) ***/
 static const float HOME_POS[6]     = {157.5,         157.5, 157.5, 157.5, 157.5,  90.0};
-static const float PICK_ABOVE[6]   = {GRIP_OPEN_ANG, 157.5, 110.0, 110.0, 120.0,  90.0};
-static const float PICK_DOWN[6]    = {GRIP_OPEN_ANG, 157.5, 130.0, 140.0, 130.0,  90.0};
-static const float CARRY[6]        = {GRIP_CLOSE_ANG,157.5, 110.0, 110.0, 120.0,  90.0};
-static const float DROP_ABOVE[6]   = {GRIP_CLOSE_ANG,157.5, 110.0, 110.0, 120.0,  20.0};
-static const float DROP_DOWN[6]    = {GRIP_CLOSE_ANG,157.5, 130.0, 140.0, 120.0,  20.0};
-static const float OPEN_AT_DROP[6] = {GRIP_OPEN_ANG, 157.5, 130.0, 140.0, 120.0,  20.0};
+static const float PICK_ABOVE[6]   = {GRIP_OPEN_ANG, 157.5, 110.0, 120.0, 120.0,  90.0};
+static const float PICK_DOWN[6]    = {GRIP_OPEN_ANG, 157.5, 130.0, 140.0, 125.0,  90.0};
+static const float CARRY[6]        = {GRIP_CLOSE_ANG,157.5, 90.0, 110.0, 100.0,  90.0};
+static const float DROP_ABOVE[6]   = {GRIP_CLOSE_ANG,157.5, 95.0, 100.0, 110.0,  20.0};
+static const float DROP_DOWN[6]    = {GRIP_CLOSE_ANG,157.5, 100.0, 115.0, 125.0,  20.0};
+static const float OPEN_AT_DROP[6] = {GRIP_OPEN_ANG, 157.5, 100.0, 115.0, 125.0,  20.0};
 
 /*** GLOBALS ******************************************************************/
 auto gripper    = Braccio.get(1);
@@ -205,4 +205,5 @@ void loop() {
 
   delay(2);
 }
+
 
